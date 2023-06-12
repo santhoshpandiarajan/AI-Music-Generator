@@ -9,10 +9,8 @@ Music has always been a captivating art form that resonates with people across c
 
 To begin our musical journey, we need to import several essential libraries. These include pandas and numpy for data manipulation, mido for handling MIDI files, IPython for audio playback, and matplotlib and librosa for visualizing audio data. Furthermore, we rely on Keras, a popular deep learning framework, to construct and train our LSTM model. These libraries equip us with the necessary tools to process MIDI files, extract musical information, and implement our neural network.
 
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image1.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+![1](https://github.com/santhoshpandiarajan/AI-Music-Generator/assets/131739054/8effdad8-5d02-4d78-8673-b772446c52f1)
 
-
-![alt_text](images/image1.png "image_tooltip")
 
 
 The dictionary `key_notes` contains entries for various note names, including both natural notes (e.g., 'C', 'D', 'E') and sharps/flats (e.g., 'C#', 'Eb', 'Gb'). Each entry consists of a note name as the key and the corresponding MIDI note number as the value.
@@ -21,20 +19,16 @@ In MIDI representation, each note is assigned a unique number to represent its p
 
 
 
-<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image2.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+![2](https://github.com/santhoshpandiarajan/AI-Music-Generator/assets/131739054/a696f3b9-825f-4b1a-be97-a5d70e48ee3f)
 
-
-![alt_text](images/image2.png "image_tooltip")
 
 
 Before diving into the code, we start by loading the MusicNet dataset metadata using pandas. The metadata provides valuable information about the available MIDI files, such as composer, title, and duration. Familiarizing ourselves with the structure and content of the dataset allows us to navigate through the vast collection of MIDI files and select specific compositions for music generation.
 
 
 
-<p id="gdcalert3" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image3.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert4">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+![3](https://github.com/santhoshpandiarajan/AI-Music-Generator/assets/131739054/09e9fd08-e229-4af0-a399-d2455d6381ae)
 
-
-![alt_text](images/image3.png "image_tooltip")
 
 
 The code begins by loading a MIDI file named `'2313_qt15_1.mid'` from the Beethoven folder in the MusicNet dataset. The `MidiFile` function from the `mido` library is used for this purpose. The `clip=True` argument ensures that any messages with timestamps outside the MIDI file's boundaries are truncated.
@@ -43,30 +37,24 @@ Next, we access the `tracks` attribute of the `mid` object. MIDI files consist o
 
 
 
-<p id="gdcalert4" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image4.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert5">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+![4](https://github.com/santhoshpandiarajan/AI-Music-Generator/assets/131739054/b31c9cd9-3fe1-48f5-a3bf-d49acb6005e7)
 
-
-![alt_text](images/image4.png "image_tooltip")
 
 
 The code then iterates over the second track (`mid.tracks[1]`) using a `for` loop. It checks if each item in the track is a metadata message by examining its string representation. If the string contains the word 'meta', it indicates that the message is a metadata message. In this case, the message is printed.
 
 
 
-<p id="gdcalert5" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image5.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert6">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+![5](https://github.com/santhoshpandiarajan/AI-Music-Generator/assets/131739054/3ec28417-93b2-47c5-90e9-2e1d2feb95a6)
 
-
-![alt_text](images/image5.png "image_tooltip")
 
 
 Similarly, the code proceeds to the third track (`mid.tracks[2]`) and iterates over its items using another `for` loop. It prints each item and increments a counter variable `k`. The loop breaks when `k` becomes greater than 50, limiting the number of items printed.
 
 
 
-<p id="gdcalert6" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image6.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert7">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+![6](https://github.com/santhoshpandiarajan/AI-Music-Generator/assets/131739054/498ef834-d597-4c7b-833e-f474cef4fd8a)
 
-
-![alt_text](images/image6.png "image_tooltip")
 
 
 This code allows us to inspect the metadata and contents of specific tracks in a MIDI file. It can be helpful for understanding the structure and content of MIDI files and extracting relevant musical information for further analysis or processing.
@@ -91,13 +79,11 @@ This code allows us to organize and access the MIDI tracks of Beethoven's compos
 
 
 
-<p id="gdcalert7" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image7.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert8">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+![7](https://github.com/santhoshpandiarajan/AI-Music-Generator/assets/131739054/6a9f87ea-9b9e-4e29-ba9c-4fc4324dc6b2)
 
 
-![alt_text](images/image7.png "image_tooltip")
 
-
-The code defines a function called `get_key` that extracts the key signature from a string representation of a MIDI message. The function takes a string `s` as input and initializes a variable `k` as `None`. 
+The code here defines a function called `get_key` that extracts the key signature from a string representation of a MIDI message. The function takes a string `s` as input and initializes a variable `k` as `None`. 
 
 It checks if the string contains the word 'key'. If it does, the function proceeds to extract the key signature by slicing the string from index 33 to 35. 
 
@@ -105,10 +91,8 @@ Next, it checks if the last character of the extracted key signature is either '
 
 
 
-<p id="gdcalert8" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image8.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert9">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+![8](https://github.com/santhoshpandiarajan/AI-Music-Generator/assets/131739054/b834d2f2-8a85-4a50-85ea-726f436c09a8)
 
-
-![alt_text](images/image8.png "image_tooltip")
 
 
 The code here defines a function called `parse_notes` that takes a MIDI track as input and returns a list of dictionaries, where each dictionary represents a note with its duration and velocity.
@@ -135,10 +119,8 @@ This function is useful for parsing MIDI tracks and extracting relevant informat
 
 
 
-<p id="gdcalert9" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image9.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert10">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+![9](https://github.com/santhoshpandiarajan/AI-Music-Generator/assets/131739054/42f3eb20-6c48-4cd5-874a-b4701cce5b16)
 
-
-![alt_text](images/image9.png "image_tooltip")
 
 
 The code here defines a function called `tune_to_midi` that takes a list of notes as input and generates a MIDI file based on those notes. It uses the `MidiFile` and `MidiTrack` classes from the `mido` library.
@@ -151,10 +133,8 @@ If `debug_mode` is `False`, the function retrieves the relevant information from
 
 
 
-<p id="gdcalert10" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image10.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert11">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+![10](https://github.com/santhoshpandiarajan/AI-Music-Generator/assets/131739054/0143feed-320f-44ba-b5dd-59e97f09a2ae)
 
-
-![alt_text](images/image10.png "image_tooltip")
 
 
 The code segment here involves the creation of a list called `tunes` and the extraction of musical data from the `beethoven_midi_traks` dictionary. It specifically focuses on the tracks that contain the word "Right" in their keys.
@@ -169,18 +149,14 @@ Next, it checks if the length of the `new_tunes` list is greater than zero, indi
 
 
 
-<p id="gdcalert11" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image11.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert12">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image11.png "image_tooltip")
+![11](https://github.com/santhoshpandiarajan/AI-Music-Generator/assets/131739054/eda67f5d-5dd7-439c-aad4-bbbb4070d866)
 
 
 
 
-<p id="gdcalert12" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image12.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert13">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
+![12](https://github.com/santhoshpandiarajan/AI-Music-Generator/assets/131739054/bd1a0609-6f82-4ab4-a71c-94b6bbb9ff1e)
 
-![alt_text](images/image12.png "image_tooltip")
 
 
 The code segment here involves the preparation of the training data for a machine learning model. It includes the `various` function and the generation of the `X` and `y` arrays.
@@ -195,28 +171,22 @@ Within the inner loop, it checks if the current window of notes, from index `i` 
 
 
 
-<p id="gdcalert13" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image13.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert14">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image13.png "image_tooltip")
+![13](https://github.com/santhoshpandiarajan/AI-Music-Generator/assets/131739054/0694f97d-208b-49ed-80b7-889c1d4f2e72)
 
 
 
 
-<p id="gdcalert14" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image14.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert15">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
+![14](https://github.com/santhoshpandiarajan/AI-Music-Generator/assets/131739054/f8676a96-fce7-4ad3-95ec-1a24850069a8)
 
-![alt_text](images/image14.png "image_tooltip")
 
 
 After that, the `X` and `y` arrays are cast to the integer data type using the `astype(int)` method. This conversion ensures that the values in `X` and `y` are represented as integers. To retrieve the shape of the `X` array, we are using the `shape` attribute.
 
 
 
-<p id="gdcalert15" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image15.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert16">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+![15](https://github.com/santhoshpandiarajan/AI-Music-Generator/assets/131739054/ac4a0525-7349-4020-bb3f-ef7912fa8a56)
 
-
-![alt_text](images/image15.png "image_tooltip")
 
 
 The code here shows the construction, compilation, and training of a sequential model using Keras. Here's an explanation of each step:
@@ -245,10 +215,8 @@ During the training process, the model learns to minimize the specified loss fun
 
 
 
-<p id="gdcalert16" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image16.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert17">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+![16](https://github.com/santhoshpandiarajan/AI-Music-Generator/assets/131739054/458a934d-501c-46f0-a0c0-dfaf0ebf6aec)
 
-
-![alt_text](images/image16.png "image_tooltip")
 
 
 The `tune_generator` function generates multiple tunes using the provided LSTM model. Each tune is saved as a MIDI file with a unique name.
@@ -273,18 +241,14 @@ The `tune_generator` function generates multiple tunes using the provided LSTM m
 
 
 
-<p id="gdcalert17" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image17.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert18">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+![17](https://github.com/santhoshpandiarajan/AI-Music-Generator/assets/131739054/c8043fdd-91ca-4b01-8d41-bed6265264b1)
 
-
-![alt_text](images/image17.png "image_tooltip")
 
 
 This function plays a MIDI file using the music21 library. The `filename` parameter specifies the path or name of the MIDI file to be played. The function loads the MIDI file, converts it to a music21 stream object, and plays it back using the `show('midi')` method. It calls the `play_midi` function and passes the filename as an argument.
 
 
 
-<p id="gdcalert18" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image18.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert19">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+![18](https://github.com/santhoshpandiarajan/AI-Music-Generator/assets/131739054/d64578aa-4c2f-46d7-bf67-5427a92cbb94)
 
-
-![alt_text](images/image18.png "image_tooltip")
 
